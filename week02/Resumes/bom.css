@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+main {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.card {
+    background-color: #ddd;
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+input,
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+li button {
+    width: auto;
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
