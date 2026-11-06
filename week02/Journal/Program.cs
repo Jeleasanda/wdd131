@@ -1,3 +1,5 @@
+// Exceeding Requirements: I handled the scenario where the user tries to load a file, 
+// ensuring that the current journal entries are cleared first before loading the new ones.
 using System;
 using System.Collections.Generic;
 
