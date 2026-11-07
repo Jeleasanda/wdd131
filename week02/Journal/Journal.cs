@@ -8,7 +8,10 @@ public class Journal
 
     public void AddEntry(Entry newEntry)
     {
-        _entries.Add(newEntry);
+        if (newEntry != null)
+        {
+            _entries.Add(newEntry);
+        }
     }
 
     public void DisplayAll()
@@ -27,41 +30,88 @@ public class Journal
 
     public void SaveToFile(string file)
     {
-        using (StreamWriter outputFile = new StreamWriter(file))
+        if (string.IsNullOrWhiteSpace(file))
         {
-            foreach (Entry entry in _entries)
-            {
-                // Using ~|~ as the separator
-                outputFile.WriteLine($"{entry._date}~|~{entry._promptText}~|~{entry._entryText}~|~{entry._mood}");
-            }
+            Console.WriteLine("Filename cannot be blank.\n");
+            return;
         }
-        Console.WriteLine("Journal saved successfully.\n");
+
+        try
+        {
+            using (StreamWriter outputFile = new StreamWriter(file))
+            {
+                foreach (Entry entry in _entries)
+                {
+                    outputFile.WriteLine(
+                        $"{entry._date}~|~{entry._promptText}~|~{entry._entryText}~|~{entry._mood}");
+                }
+            }
+
+            Console.WriteLine("Journal saved successfully.\n");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("The journal could not be saved because of a file error.\n");
+        }
+        catch (UnauthorizedAccessException)
+        {
+            Console.WriteLine("You do not have permission to save to that file.\n");
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Please enter a valid filename.\n");
+        }
     }
 
     public void LoadFromFile(string file)
     {
+        if (string.IsNullOrWhiteSpace(file))
+        {
+            Console.WriteLine("Filename cannot be blank.\n");
+            return;
+        }
+
         if (!File.Exists(file))
         {
             Console.WriteLine("File not found.\n");
             return;
         }
 
-        string[] lines = System.IO.File.ReadAllLines(file);
-        _entries.Clear(); // Clear existing before loading
-
-        foreach (string line in lines)
+        try
         {
-            string[] parts = line.Split("~|~");
-            if (parts.Length == 4)
+            string[] lines = File.ReadAllLines(file);
+            List<Entry> loadedEntries = new List<Entry>();
+
+            foreach (string line in lines)
             {
-                Entry loadedEntry = new Entry();
-                loadedEntry._date = parts[0];
-                loadedEntry._promptText = parts[1];
-                loadedEntry._entryText = parts[2];
-                loadedEntry._mood = parts[3];
-                _entries.Add(loadedEntry);
+                string[] parts = line.Split(
+                    new[] { "~|~" },
+                    StringSplitOptions.None);
+
+                if (parts.Length == 4)
+                {
+                    Entry loadedEntry = new Entry
+                    {
+                        _date = parts[0],
+                        _promptText = parts[1],
+                        _entryText = parts[2],
+                        _mood = parts[3]
+                    };
+
+                    loadedEntries.Add(loadedEntry);
+                }
             }
+
+            _entries = loadedEntries;
+            Console.WriteLine("Journal loaded successfully.\n");
         }
-        Console.WriteLine("Journal loaded successfully.\n");
+        catch (IOException)
+        {
+            Console.WriteLine("The journal could not be loaded because of a file error.\n");
+        }
+        catch (UnauthorizedAccessException)
+        {
+            Console.WriteLine("You do not have permission to read that file.\n");
+        }
     }
 }
