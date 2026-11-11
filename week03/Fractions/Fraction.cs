@@ -2,33 +2,42 @@ using System;
 
 public class Fraction
 {
-    // Step 3: Private attributes
     private int _top;
     private int _bottom;
 
-    // Step 4: Constructors
-    // 1. No parameters (defaults to 1/1)
+    // Default constructor: 1/1
     public Fraction()
     {
         _top = 1;
         _bottom = 1;
     }
 
-    // 2. One parameter for top (defaults bottom to 1)
+    // Constructor with top only: 5/1
     public Fraction(int wholeNumber)
     {
         _top = wholeNumber;
         _bottom = 1;
     }
 
-    // 3. Two parameters for top and bottom
+    // Constructor with top and bottom
     public Fraction(int top, int bottom)
     {
+        if (bottom == 0)
+        {
+            throw new ArgumentException("Denominator cannot be zero.");
+        }
+
         _top = top;
         _bottom = bottom;
+
+        // Keep fraction sign consistent
+        if (_bottom < 0)
+        {
+            _top *= -1;
+            _bottom *= -1;
+        }
     }
 
-    // Step 5: Getters and Setters
     public int GetTop()
     {
         return _top;
@@ -46,10 +55,20 @@ public class Fraction
 
     public void SetBottom(int bottom)
     {
+        if (bottom == 0)
+        {
+            throw new ArgumentException("Denominator cannot be zero.");
+        }
+
         _bottom = bottom;
+
+        if (_bottom < 0)
+        {
+            _top *= -1;
+            _bottom *= -1;
+        }
     }
 
-    // Step 6: Methods to return representations
     public string GetFractionString()
     {
         return $"{_top}/{_bottom}";
@@ -57,7 +76,6 @@ public class Fraction
 
     public double GetDecimalValue()
     {
-        // We cast to double so it does decimal division, not integer division
-        return (double)_top / (double)_bottom;
+        return (double)_top / _bottom;
     }
 }
