@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Scripture
 {
@@ -10,35 +11,43 @@ public class Scripture
     {
         _reference = reference;
         _words = new List<Word>();
-        
-        // Split the text into words and create Word objects
-        string[] wordsArray = text.Split(' ');
-        foreach (string w in wordsArray)
+
+        string[] wordsArray = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        foreach (string wordText in wordsArray)
         {
-            _words.Add(new Word(w));
+            _words.Add(new Word(wordText));
         }
     }
 
     public void HideRandomWords(int numberToHide)
     {
-        Random random = new Random();
-        
-        // This loop ensures we only hide words that are currently visible
-        int hiddenCount = 0;
-        while (hiddenCount < numberToHide)
+        if (numberToHide <= 0 || _words.Count == 0)
         {
-            int index = random.Next(_words.Count);
-            
-            if (!_words[index].IsHidden())
+            return;
+        }
+
+        Random random = new Random();
+        int hiddenCount = 0;
+        List<int> availableIndexes = new List<int>();
+
+        for (int i = 0; i < _words.Count; i++)
+        {
+            if (!_words[i].IsHidden())
             {
-                _words[index].Hide();
-                hiddenCount++;
+                availableIndexes.Add(i);
             }
-            
-            // Safety check: if all words are hidden, break out
-            if (IsCompletelyHidden())
+        }
+
+        while (hiddenCount < numberToHide && availableIndexes.Count > 0)
+        {
+            int index = random.Next(availableIndexes.Count);
+            int wordIndex = availableIndexes[index];
+            availableIndexes.RemoveAt(index);
+
+            if (!_words[wordIndex].IsHidden())
             {
-                break;
+                _words[wordIndex].Hide();
+                hiddenCount++;
             }
         }
     }
@@ -46,12 +55,12 @@ public class Scripture
     public string GetDisplayText()
     {
         string display = _reference.GetDisplayText() + " ";
-        
+
         foreach (Word word in _words)
         {
             display += word.GetRenderedText() + " ";
         }
-        
+
         return display.Trim();
     }
 
@@ -61,9 +70,10 @@ public class Scripture
         {
             if (!word.IsHidden())
             {
-                return false; // Found a word that is not hidden
+                return false;
             }
         }
-        return true; // All words are hidden
+
+        return true;
     }
 }

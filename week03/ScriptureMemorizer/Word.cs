@@ -23,19 +23,20 @@ public class Word
 
     public string GetRenderedText()
     {
-        if (_isHidden)
-        {
-            // Create a string of underscores the same length as the word
-            string underscores = "";
-            for (int i = 0; i < _text.Length; i++)
-            {
-                underscores += "_";
-            }
-            return underscores;
-        }
-        else
+        if (!_isHidden)
         {
             return _text;
         }
+
+        char[] characters = _text.ToCharArray();
+        for (int i = 0; i < characters.Length; i++)
+        {
+            if (char.IsLetterOrDigit(characters[i]))
+            {
+                characters[i] = '_';
+            }
+        }
+
+        return new string(characters);
     }
 }
