@@ -1,0 +1,114 @@
+/* Global CSS Variables */
+:root {
+    --primary-color: #007749; /* South Africa Green */
+    --secondary-color: #FFB81C; /* South Africa Gold */
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero img {
+    width: 100%;
+    display: block;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile view: 1 column */
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-top: 4px solid var(--secondary-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    text-align: center;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Mobile Weather Icon */
+.mobile-weather-icon {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+/* Hide the desktop emoji on mobile */
+.weather-icon {
+    display: none;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* Media Query for Wider Views (Desktop) */
+@media (min-width: 600px) {
+    .content-grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+    }
+
+    /* Hide the SVG mobile icon on desktop */
+    .mobile-weather-icon {
+        display: none;
+    }
+
+    /* Show the emoji on desktop using a pseudo-element */
+    .weather-icon {
+        display: inline;
+    }
+    
+    .weather-icon::after {
+        content: "⛅"; 
+    }
+}
