@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="W03 Country Page Assignment">
+    
+    <!-- Fixed Meta Description (now over 50 characters) -->
+    <meta name="description" content="A beautiful country page about South Africa featuring the Big 5 animals, geographic data, and a static weather forecast.">
+    
     <meta name="author" content="Asanda Jele">
-    <title>W03 Country Page</title>
+    <title>W03 Country Page - South Africa</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +25,12 @@
     </header>
 
     <main>
-        <!-- HERO IMAGE with srcset as required -->
+        <!-- HERO IMAGE -->
         <div class="hero">
             <picture>
                 <source srcset="images/hero-large.webp" media="(min-width: 600px)">
-                <img src="images/hero-small.webp" alt="Beautiful landscape of South Africa" width="100%" height="auto">
+                <!-- Fixed: Removed width="100%" and height="auto" from here -->
+                <img src="images/hero-small.webp" alt="Beautiful landscape of South Africa">
             </picture>
         </div>
 
@@ -46,9 +50,9 @@
 
             <!-- WEATHER SECTION -->
             <section class="card">
-                <h2>Weather <span class="weather-icon">⛅</span></h2>
+                <h2>Weather <span class="weather-icon"></span></h2>
                 
-                <!-- SVG Icon for mobile (hidden on desktop) -->
+                <!-- SVG Icon for mobile -->
                 <div class="mobile-weather-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79l-1.41 1.41l1.79 1.79zM4 10.5H1v2h3zm9-9.95h-2V3.5h2zm7.45 3.91l-1.41-1.41l-1.79 1.79l1.41 1.41zm-3.21 13.7l1.79 1.8l1.41-1.41l-1.8-1.79zM20 10.5v2h3v-2zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6m-5.24 11.76l-1.79 1.79l1.41 1.41l1.79-1.79zM11 19.5H9v3h2z"/></svg>
                 </div>
