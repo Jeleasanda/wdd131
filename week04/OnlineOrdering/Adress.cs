@@ -2,22 +2,24 @@ using System;
 
 public class Address
 {
-    private string _street;
-    private string _city;
-    private string _state;
-    private string _country;
+    private readonly string _street;
+    private readonly string _city;
+    private readonly string _state;
+    private readonly string _country;
 
     public Address(string street, string city, string state, string country)
     {
-        _street = street;
-        _city = city;
-        _state = state;
-        _country = country;
+        _street = street ?? string.Empty;
+        _city = city ?? string.Empty;
+        _state = state ?? string.Empty;
+        _country = country ?? string.Empty;
     }
 
     public bool IsInUSA()
     {
-        return _country.ToLower() == "usa" || _country.ToLower() == "united states";
+        return string.Equals(_country.Trim(), "USA", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(_country.Trim(), "United States", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(_country.Trim(), "United States of America", StringComparison.OrdinalIgnoreCase);
     }
 
     public string GetFullAddress()

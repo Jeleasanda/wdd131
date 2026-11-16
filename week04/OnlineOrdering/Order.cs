@@ -1,49 +1,42 @@
+using System;
 using System.Collections.Generic;
-using System.Text; // Needed for StringBuilder
+using System.Text;
 
 public class Order
 {
-    private List<Product> _products = new List<Product>();
-    private Customer _customer;
+    private readonly List<Product> _products = new List<Product>();
+    private readonly Customer _customer;
 
     public Order(Customer customer)
     {
-        _customer = customer;
+        _customer = customer ?? throw new ArgumentNullException(nameof(customer));
     }
 
     public void AddProduct(Product product)
     {
-        _products.Add(product);
+        _products.Add(product ?? throw new ArgumentNullException(nameof(product)));
     }
 
-    public double GetTotalPrice()
+    public decimal GetTotalPrice()
     {
-        double total = 0;
-        foreach (Product p in _products)
+        decimal total = 0;
+        foreach (Product product in _products)
         {
-            total += p.GetTotalCost();
+            total += product.GetTotalCost();
         }
 
-        // Add shipping cost
-        if (_customer.LivesInUSA())
-        {
-            total += 5;
-        }
-        else
-        {
-            total += 35;
-        }
-
-        return total;
+        return total + (_customer.LivesInUSA() ? 5m : 35m);
     }
 
     public string GetPackingLabel()
     {
-        StringBuilder label = new StringBuilder("PACKING LABEL:\n");
-        foreach (Product p in _products)
+        StringBuilder label = new StringBuilder("PACKING LABEL:");
+        foreach (Product product in _products)
         {
-            label.AppendLine($"{p.GetName()} (ID: {p.GetProductId()})");
+            label.AppendLine();
+            label.Append($"{product.GetName()} (ID: {product.GetProductId()})");
         }
+
         return label.ToString();
     }
 

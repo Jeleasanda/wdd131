@@ -1,22 +1,41 @@
+using System;
+
 public class Product
 {
-    private string _name;
-    private string _productId;
-    private double _price;
-    private int _quantity;
+    private readonly string _name;
+    private readonly string _productId;
+    private readonly decimal _price;
+    private readonly int _quantity;
 
     public Product(string name, string productId, double price, int quantity)
     {
-        _name = name;
-        _productId = productId;
-        _price = price;
+        if (price < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(price), "Price cannot be negative.");
+        }
+
+        if (quantity < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(quantity), "Quantity cannot be negative.");
+        }
+
+        _name = name ?? string.Empty;
+        _productId = productId ?? string.Empty;
+        _price = (decimal)price;
         _quantity = quantity;
     }
 
-    public string GetName() { return _name; }
-    public string GetProductId() { return _productId; }
+    public string GetName()
+    {
+        return _name;
+    }
 
-    public double GetTotalCost()
+    public string GetProductId()
+    {
+        return _productId;
+    }
+
+    public decimal GetTotalCost()
     {
         return _price * _quantity;
     }
