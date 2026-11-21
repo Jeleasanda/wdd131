@@ -86,3 +86,11 @@ footer {
     color: white;
     margin-top: 2rem;
 }
+
+/* Media query to pass the audit tool and help mobile view */
+@media screen and (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
