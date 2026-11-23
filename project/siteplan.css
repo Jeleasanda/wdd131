@@ -1,0 +1,126 @@
+/* CSS Variables for Color Schema */
+:root {
+    --primary-color: #1B4332;
+    --secondary-color: #F4A261;
+    --bg-color: #F8F9FA;
+    --text-color: #333333;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+    margin: 0 0 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+}
+
+/* Main Content */
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--secondary-color);
+}
+
+/* Color Schema Boxes */
+.color-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.color-box {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.primary { background-color: var(--primary-color); color: white; }
+.secondary { background-color: var(--secondary-color); color: #333; }
+.background { background-color: var(--bg-color); color: #333; }
+
+/* Wireframes */
+.wireframe {
+    background-color: #eee;
+    border: 2px dashed #999;
+    padding: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.wf-header { background-color: #ccc; padding: 15px; margin-bottom: 10px; }
+.wf-hero { background-color: #bbb; padding: 40px; margin-bottom: 10px; }
+.wf-content { background-color: #ddd; padding: 20px; margin-bottom: 10px; }
+.wf-footer { background-color: #ccc; padding: 10px; }
+
+/* Desktop Wireframe Grid */
+.wf-grid {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.wf-col {
+    flex: 1;
+    background-color: #ddd;
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
