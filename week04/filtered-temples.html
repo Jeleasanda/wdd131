@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- These two tags fix the Audit Tool error -->
+    <meta name="description" content="A dynamic picture album displaying temples of the Church of Jesus Christ of Latter-day Saints, filtered by age and size.">
+    <meta name="author" content="Asanda Jele">
+    
+    <title>Temple Album</title>
+    <link rel="stylesheet" href="filtered-temples.css">
+    <script src="filtered-temples.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Temple Album</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="home">Home</a></li>
+                <li><a href="#" id="old">Old</a></li>
+                <li><a href="#" id="new">New</a></li>
+                <li><a href="#" id="large">Large</a></li>
+                <li><a href="#" id="small">Small</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="temple-container" class="grid"></div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentyear"></span> Asanda Jele | South Africa</p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+</html>
