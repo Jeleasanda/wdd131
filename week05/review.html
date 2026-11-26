@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Review confirmation page showing how many reviews you have submitted.">
+    
+    <!-- Added meta description to satisfy the audit tool -->
+    <meta name="description" content="Review confirmation page for the Product Review Form assignment. Displays the total number of reviews submitted.">
+    
+    <meta name="author" content="Asanda Jele">
     <title>Review Submitted</title>
-    <!-- Pointing to the styles folder -->
-    <link rel="stylesheet" href="styles/form.css">
+    
+    <!-- Pointing to the root styles folder -->
+    <link rel="stylesheet" href="../styles/form.css">
+    
     <script>
+        // This script runs when the confirmation page loads
         window.addEventListener('DOMContentLoaded', () => {
+            // Get current count from localStorage, or start at 0
             let reviewCount = Number(window.localStorage.getItem('reviewCount-ls')) || 0;
+            
+            // Increment the count
             reviewCount++;
+            
+            // Save it back to localStorage
             window.localStorage.setItem('reviewCount-ls', reviewCount);
+            
+            // Display the count on the page
             document.getElementById('reviewCount').textContent = reviewCount;
         });
     </script>
@@ -20,16 +34,27 @@
     <header>
         <h1>Review Submitted</h1>
     </header>
+    
     <main>
         <div class="form-group" style="text-align: center; background: white; padding: 2rem; border-radius: 8px;">
             <h2>Thank you for your review!</h2>
             <p>You have completed <span id="reviewCount">0</span> reviews.</p>
             <br>
-            <a href="form.html" style="color: var(--primary-color); font-weight: bold;">Submit another review</a>
+            <a href="form.html" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">
+                Submit another review
+            </a>
         </div>
     </main>
+    
     <footer>
-        <p>&copy; 2026 Asanda Jele | South Africa</p>
+        <p>&copy; <span id="currentyear"></span> Asanda Jele | South Africa</p>
+        <p id="lastModified"></p>
     </footer>
+
+    <script>
+        // Adding the footer dates specifically for this page
+        document.getElementById("currentyear").textContent = new Date().getFullYear();
+        document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    </script>
 </body>
 </html>
