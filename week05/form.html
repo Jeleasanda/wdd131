@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Product Review Form for W05 Assignment">
+    
+    <!-- Fixed: Meta description is now long enough -->
+    <meta name="description" content="A dynamic product review form where users can rate products, select features they found useful, and leave a written review.">
     <meta name="author" content="Asanda Jele">
+    
     <title>Product Review Form</title>
-    <link rel="stylesheet" href="form.css">
-    <script src="form.js" defer></script>
+    
+    <!-- Fixed: Pointing to the styles folder -->
+    <link rel="stylesheet" href="styles/form.css">
+    
+    <!-- Fixed: Pointing to the scripts folder -->
+    <script src="scripts/form.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,12 +24,12 @@
     <main>
         <form action="review.html" method="get">
             
-            <!-- Product Name (Populated by JS) -->
+            <!-- Product Name -->
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <select id="productName" name="productName" required>
-                    <option value="" disabled selected>Choose a Product ...</option>
-                    <!-- Options injected via JS -->
+                    <!-- Fixed: Exact placeholder text required by audit -->
+                    <option value="" disabled selected>Select a Product ...</option>
                 </select>
             </div>
 
@@ -30,11 +37,12 @@
             <div class="form-group">
                 <label>Overall Rating</label>
                 <div class="rating-container">
-                    <label><input type="radio" name="rating" value="1" required> ☆</label>
-                    <label><input type="radio" name="rating" value="2" required> ☆☆</label>
-                    <label><input type="radio" name="rating" value="3" required> ☆☆☆</label>
-                    <label><input type="radio" name="rating" value="4" required> ☆☆☆☆</label>
-                    <label><input type="radio" name="rating" value="5" required> ☆☆☆☆☆</label>
+                    <!-- Fixed: Added unique id to every radio button -->
+                    <label><input type="radio" id="rating1" name="rating" value="1" required> ☆</label>
+                    <label><input type="radio" id="rating2" name="rating" value="2" required> ☆☆</label>
+                    <label><input type="radio" id="rating3" name="rating" value="3" required> ☆☆☆</label>
+                    <label><input type="radio" id="rating4" name="rating" value="4" required> ☆☆☆☆</label>
+                    <label><input type="radio" id="rating5" name="rating" value="5" required> ☆☆☆☆☆</label>
                 </div>
             </div>
 
@@ -48,10 +56,10 @@
             <div class="form-group">
                 <label>Which features did you find useful in the product?<br><em>(Check all that apply)</em></label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="features" value="durability"> Durability</label>
-                    <label><input type="checkbox" name="features" value="ease-of-use"> Ease of Use</label>
-                    <label><input type="checkbox" name="features" value="performance"> Performance</label>
-                    <label><input type="checkbox" name="features" value="design"> Design</label>
+                    <label><input type="checkbox" id="feat1" name="features" value="durability"> Durability</label>
+                    <label><input type="checkbox" id="feat2" name="features" value="ease-of-use"> Ease of Use</label>
+                    <label><input type="checkbox" id="feat3" name="features" value="performance"> Performance</label>
+                    <label><input type="checkbox" id="feat4" name="features" value="design"> Design</label>
                 </div>
             </div>
 
@@ -67,7 +75,6 @@
                 <input type="text" id="userName" name="userName">
             </div>
 
-            <!-- Submit Button -->
             <input type="submit" value="Post Review" class="submit-btn">
         </form>
     </main>
