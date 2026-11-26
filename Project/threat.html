@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understanding the threats of unchecked AI and corporate greed in modern technology.">
+    <meta name="author" content="Asanda Jele">
+    <title>Project Humanity - The Threat</title>
+    <link rel="stylesheet" href="project.css">
+    <script defer>
+        // Simple JS to demonstrate dynamic interaction (W06 Requirement)
+        window.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('revealBtn');
+            const hiddenText = document.getElementById('hiddenText');
+            
+            btn.addEventListener('click', () => {
+                if (hiddenText.style.display === 'none') {
+                    hiddenText.style.display = 'block';
+                    btn.textContent = 'Hide Warning';
+                } else {
+                    hiddenText.style.display = 'none';
+                    btn.textContent = 'Reveal Warning';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Project Humanity 🌱</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="threat.html">The Threat</a></li>
+                <li><a href="solution.html">The Solution</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>The Threat of Unchecked Technology</h2>
+        <p>When technology is driven purely by profit and control, it can become a dangerous tool. Massive data centers consume vast amounts of energy, and algorithms are often designed to manipulate human behavior for financial gain.</p>
+        
+        <div class="card" style="margin-top: 2rem; text-align: center;">
+            <h3>Do you want to see the real danger?</h3>
+            <button id="revealBtn" style="padding: 10px 20px; background: var(--primary-color); color: white; border: none; cursor: pointer; border-radius: 5px; font-size: 1rem;">Reveal Warning</button>
+            <div id="hiddenText" style="display: none; margin-top: 1rem; color: red; font-weight: bold;">
+                <p>The true danger is not that AI will hate us, but that humans will use AI to exploit other humans, destroying the Earth in the process for short-term profit.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Asanda Jele | South Africa</p>
+        <p><a href="references.html">References Page</a></p>
+    </footer>
+</body>
+</html>
