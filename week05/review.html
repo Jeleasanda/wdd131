@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Submitted</title>
+    <link rel="stylesheet" href="form.css">
+    <script>
+        // This script runs when the confirmation page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            // Get current count from localStorage, or start at 0
+            let reviewCount = Number(window.localStorage.getItem('reviewCount-ls')) || 0;
+            
+            // Increment the count
+            reviewCount++;
+            
+            // Save it back to localStorage
+            window.localStorage.setItem('reviewCount-ls', reviewCount);
+            
+            // Display the count on the page
+            document.getElementById('reviewCount').textContent = reviewCount;
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Review Submitted</h1>
+    </header>
+    <main>
+        <div class="form-group" style="text-align: center; background: white; padding: 2rem; border-radius: 8px;">
+            <h2>Thank you for your review!</h2>
+            <p>You have completed <span id="reviewCount">0</span> reviews.</p>
+            <br>
+            <a href="form.html" style="color: var(--primary-color); font-weight: bold;">Submit another review</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 Asanda Jele | South Africa</p>
+    </footer>
+</body>
+</html>
